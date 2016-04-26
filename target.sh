@@ -1,4 +1,6 @@
+#!/bin/bash
+
 echo "Running toLower.sh"
-. toLower.sh
+. ~/GitHub/utils/photo-rename/toLower.sh
 echo "Running renameImageByDate.sh"
-. renameImageByDate.sh
+. ~/GitHub/utils/photo-rename/renameImageByDate.sh
