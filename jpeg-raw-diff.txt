@@ -1,0 +1,4 @@
+find ./  -printf "%f\n" | sort | sed -e 's/\..*$//' > ../jpeg-files
+find ./  -printf "%f\n" | sort | sed -e 's/\..*$//' > ../raw-files
+comm jpeg-files raw-files -2 -3 | sed 's/$/\.jpg/' > cp-jpgs
+cp `cat ../cp-jpgs` "../jpeg (unique)"
