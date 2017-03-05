@@ -1,10 +1,8 @@
 #!/bin/bash
 
-PREFIX=$1
-
 function rename() 
 {
-  datetime=$(exiftool -DateTimeOriginal -s3 $1)
+  datetime=$(exiftool -DateTimeOriginal -s3 "$1")
   if [ -z "$datetime" ] 
   then
 	echo "$1 has no DateTimeOriginal"
@@ -23,7 +21,7 @@ function rename()
     if [ ! -f $targetFilename ]
     then
       echo "$1 --> $targetFilename"
-      mv $1 $targetFilename
+      mv "$1" $targetFilename
       break
     else
       secondSequence=$((secondSequence+1)) 
@@ -31,35 +29,11 @@ function rename()
   done
 }
 
-function prefixRename()
-{
-  extension=${1##*.}
-  sequence=0
-  while true
-  do
-    formattedSequence=$(printf "%03d" $sequence)
-    targetFilename=""
-    if [ -z $PREFIX ]
-    then
-        targetFilename=${formattedSequence}_0.${extension}
-    else
-        targetFilename=${PREFIX}_${formattedSequence}_0.${extension}
-    fi
-
-    if [ ! -f $targetFilename ]
-    then
-      echo "$1 --> $targetFilename"
-      mv $1 $targetFilename
-      break
-    else
-      sequence=$((sequence+1))
-    fi
-  done
-}
-
-files=$(ls -p | grep -v /)
-for f in $files
+#files=$(ls -p | grep -v /)
+#for f in $
+find . -maxdepth 1 -type f | sort | while read f
 do
+  echo "renaming $f"
   rename "$f"
 done
 
