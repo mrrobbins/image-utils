@@ -4,27 +4,26 @@
 
 echo Analyzing contents of [`pwd`]
 
-level0DirCount=`find ./* -maxdepth 0 -type d | wc -l | xargs`
-echo "Level-0 Directory count: [$level0DirCount]"
+shallowDirCount=`find ./* -maxdepth 0 -type d | wc -l | xargs`
+echo "Level-0 Directory count: [$shallowDirCount]"
 
-if [ $level0DirCount -gt 0 ]
+if [ $shallowDirCount -gt 0 ]
 then
-  totalNestedDirCount=`find ./* -type d | wc -l | xargs`
-  echo "Level-N directory count: [$totalNestedDirCount]"
+  deepDirCount=`find ./* -type d | wc -l | xargs`
+  echo "Level-N directory count: [$deepDirCount]"
 
-  if hash asdf 2>/dev/null
+  if hash tree 2>/dev/null # check if tree program is on path
   then
     echo "--Directory Tree--"
-    tree -d
+    tree -d -C --noreport
   else
     echo "--Directory List--"
     find ./* -type d
-    echo
   fi
 fi
 
 # find . -type f | awk -F"." '{print $NF}' | sort | uniq -c
-fileCount=`find ./* -maxdepth 0 -type f | wc -l | xargs`
+fileCount=`find ./* -type f | wc -l | xargs`
 echo "File count: [$fileCount]"
 
 echo "--File count grouped by extension--"
