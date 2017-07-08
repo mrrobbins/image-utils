@@ -30,14 +30,7 @@
 
 # Note: the "l" modifier in "%le" will lowercase the extension in the renamed file. E.g. [.JPG] --> [.jpg], [.CR2] --> [.cr2]
 
-
-if [ $# -eq 0 ]
-  then
-    echo "Extension filter required!"
-    exit 1
-fi
-
-echo Renaming files in [`pwd`] with extension [$1]
+echo Renaming files in [`pwd`]
 
 exiftool -v \
   -fileOrder DateTimeOriginal \
@@ -47,4 +40,4 @@ exiftool -v \
   '-filename<${CreateDate}_%.2c_0.%le' \
   '-filename<${DateTimeOriginal}_%.2c_0.%le' \
   -d %Y-%m-%d_%H-%M-%S \
-  -ext $1 . -o media-batch-renamed/
+  . -o rename-output/
