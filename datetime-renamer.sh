@@ -33,11 +33,13 @@
 echo Renaming files in [`pwd`]
 
 exiftool -v \
-  -fileOrder DateTimeOriginal \
-  -fileOrder CreateDate \
-  -fileOrder FileName \
+  -fileOrder dateTimeOriginal \
+  -fileOrder createDate \
+  -fileOrder fileName \
   '-filename=%.3c_0.%le' \
-  '-filename<${CreateDate}_%.2c_0.%le' \
-  '-filename<${DateTimeOriginal}_%.2c_0.%le' \
+  '-filename<${createDate}_%.2c_0.%le' \
+  '-filename<${dateTimeOriginal}_%.2c_0.%le' \
   -d %Y-%m-%d_%H-%M-%S \
-  . -o rename-output/
+  '-directory<renamed-output/${fileType}' \
+  -o renamed-output \
+  .
