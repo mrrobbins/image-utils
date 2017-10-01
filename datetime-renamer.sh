@@ -33,6 +33,7 @@
 echo Renaming files in [`pwd`]
 
 exiftool -v \
+  -api largefilesupport=1 \
   -fileOrder dateTimeOriginal \
   -fileOrder createDate \
   -fileOrder fileName \
