@@ -54,13 +54,13 @@ Recursive directory count: [4]
 └── Friends\ Wedding
     └── jpegs
 
-Recursive file count: [110]
+Recursive file count: [160]
 Shallow file count: [50]
 --Recursive file count grouped by extension--
-  60 jpg
+  70 jpg
   40 cr2
 --Shallow file count grouped by extension--
-  10 jpg
+  50 jpg
 ```
 
 ### `datetime-renamer.sh`
