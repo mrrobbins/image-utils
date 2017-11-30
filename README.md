@@ -50,17 +50,17 @@ Recursive directory count: [4]
 .
 ├── Beach\ Vacation
 │   └── jpegs
-│   └── raw
+│   └── raws
 └── Friends\ Wedding
     └── jpegs
 
-Recursive file count: [160]
-Shallow file count: [50]
+Recursive file count: [138]
+Shallow file count: [33]
 --Recursive file count grouped by extension--
-  70 jpg
-  40 cr2
+  88 jpg
+  50 cr2
 --Shallow file count grouped by extension--
-  50 jpg
+  33 jpg
 ```
 
 ### `datetime-renamer.sh`
