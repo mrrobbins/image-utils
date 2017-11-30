@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy and rename media files with the given extension to an output directory.
-# Output files to subdirectory named "media-batch-renamed". Original files are preserved.
+# Output files to subdirectory named "renamed-output". Original files are preserved.
 # Process the files in ascending order. Sorted by DateTimeOriginal tag, then CreateDate tag, then Filename.
 
 # This script favors a date formatted filename. For each file, it attempts the following renaming strategies, in order, based on the available metadata tags in the file, where last-one-wins:
@@ -33,7 +33,6 @@
 echo Renaming files in [`pwd`]
 
 exiftool -v \
-  -api largefilesupport=1 \
   -fileOrder dateTimeOriginal \
   -fileOrder createDate \
   -fileOrder fileName \
